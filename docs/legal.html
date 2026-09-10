@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ══════════════════════════════════════════════════════════════════
+  UNIVERSAL LEGAL PAGE TEMPLATE (Privacy Policy + Terms of Service)
+  ══════════════════════════════════════════════════════════════════
+  HOW TO REUSE FOR ANOTHER APP:
+    1. Copy this single file into a new public GitHub repo as index.html
+    2. Edit ONLY the APP_CONFIG block below (name, email, features…)
+    3. GitHub repo → Settings → Pages → Deploy from branch → main /(root)
+    4. Play Console → App content → Privacy policy: https://thymelime.validcodes.app/#privacy
+       (link #terms wherever Terms are requested)
+       (Play Console "Account deletion URL" field: https://thymelime.validcodes.app/#delete)
+  Everything below the config renders automatically. No build step,
+  no external requests (no CDNs/fonts/analytics), works offline.
+  ══════════════════════════════════════════════════════════════════
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legal — Privacy Policy &amp; Terms</title>
+<style>
+  :root { --accent:#7cb342; --accent-dim:#558b2f; --bg:#fcfcf9; --card:#ffffff; --text:#1f2430; --muted:#5c6470; --line:#e4e7eb; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+  .wrap { max-width:860px; margin:0 auto; padding:32px 22px 80px; }
+  header.top { padding:36px 0 8px; }
+  .appname { font-size:1.9rem; font-weight:800; letter-spacing:-0.02em; }
+  .appname .dot { color:var(--accent); }
+  nav.tabs { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 8px; position:sticky; top:0; background:var(--bg); padding:12px 0; z-index:5; border-bottom:1px solid var(--line); }
+  nav.tabs a { text-decoration:none; color:var(--muted); font-weight:600; font-size:.95rem; padding:8px 16px; border-radius:999px; border:1px solid var(--line); background:var(--card); }
+  nav.tabs a.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+  section.doc { display:none; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:34px 30px; margin-top:18px; }
+  section.doc.visible { display:block; }
+  h1 { font-size:1.5rem; margin-bottom:2px; }
+  h2 { font-size:1.08rem; margin:30px 0 8px; color:var(--accent-dim); text-transform:uppercase; letter-spacing:.04em; font-size:.92rem; }
+  h2:first-of-type { margin-top:22px; }
+  h3 { font-size:1.02rem; margin:20px 0 6px; }
+  p, li { margin:8px 0; color:#2a303c; }
+  ul { padding-left:22px; }
+  strong { color:var(--text); }
+  .muted { color:var(--muted); font-size:.92rem; }
+  .meta { color:var(--muted); font-size:.95rem; margin-bottom:6px; }
+  table { width:100%; border-collapse:collapse; margin:14px 0; font-size:.93rem; }
+  th, td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; font-size:.85rem; text-transform:uppercase; letter-spacing:.04em; }
+  .callout { border-left:4px solid var(--accent); background:#f4f8ee; padding:12px 16px; border-radius:0 10px 10px 0; margin:14px 0; font-size:.95rem; }
+  section.doc a { color:var(--accent-dim); }
+  /* account deletion request form */
+  .del-form { border:1px solid var(--line); border-radius:12px; padding:18px; margin:16px 0; background:#fbfcf9; }
+  .del-form label { display:block; font-weight:600; font-size:.9rem; margin:12px 0 4px; }
+  .del-form input, .del-form textarea { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; background:#fff; color:var(--text); }
+  .del-form textarea { min-height:90px; resize:vertical; }
+  .btn { display:inline-block; background:var(--accent); color:#fff; font-weight:700; border:none; border-radius:999px; padding:12px 22px; font-size:1rem; cursor:pointer; margin-top:14px; }
+  .btn:hover { filter:brightness(1.05); }
+  .copyline { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:8px 0; }
+  .copyline code { background:#f1f3ee; border:1px solid var(--line); border-radius:6px; padding:4px 8px; font-size:.9rem; }
+  .copybtn { border:1px solid var(--line); background:#fff; border-radius:6px; padding:3px 10px; font-size:.8rem; cursor:pointer; color:var(--muted); }
+  .formhint { color:var(--muted); font-size:.88rem; margin-top:10px; }
+  .err { color:#b3261e; font-size:.88rem; margin-top:8px; display:none; }
+  footer { margin-top:34px; color:var(--muted); font-size:.85rem; text-align:center; }
+  @media print { nav.tabs{display:none} section.doc{display:block!important; border:none; padding:0} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="appname" id="cfg-appname">App<span class="dot">.</span></div>
+  <div class="meta" id="cfg-tagline"></div>
+</header>
+
+<nav class="tabs">
+  <a href="#privacy" id="tab-privacy">Privacy Policy</a>
+  <a href="#terms" id="tab-terms">Terms of Service</a>
+  <a href="#delete" id="tab-delete">Delete Account</a>
+</nav>
+
+<!-- ═══════════════════ PRIVACY POLICY ═══════════════════ -->
+<section class="doc" id="privacy">
+  <h1>Privacy Policy</h1>
+  <p class="meta">Effective date: <span id="cfg-date"></span></p>
+
+  <p>This Privacy Policy explains how <strong id="cfg-app1">the App</strong> (the "Service") handles your information. <span id="cfg-e2ee-summary"></span></p>
+  <p class="muted">Operator: <strong id="cfg-operator"></strong> (<span id="cfg-country"></span>). Contact for any privacy question, request, or complaint: <strong id="cfg-email1"></strong>.</p>
+
+  <h2>Summary</h2>
+  <ul>
+    <li><strong>Your content is yours.</strong> We do not sell your content and we never use it for advertising, profiling, or AI training. <span id="cfg-summary-access"></span></li>
+    <li><strong id="cfg-e2ee-li">End-to-end encrypted data is technically unreadable to us.</strong></li>
+    <li>We collect very little: what is needed to run your account, sync your data across your devices, deliver notifications you enable, understand aggregate usage, and manage purchases.</li>
+    <li><strong>We do not show ads</strong> and do not embed advertising or cross-app tracking SDKs.</li>
+    <li>You can delete your content in the app at any time and request full account deletion by email.</li>
+  </ul>
+
+  <h2>1. Information we process</h2>
+  <h3>Account information</h3>
+  <ul>
+    <li><strong>Email address and basic profile</strong> — received from your sign-in provider (Google) to create and identify your account. We never receive your provider password.</li>
+    <li><strong>Account identifiers</strong> — internal random IDs linking your data across devices and services.</li>
+    <li><strong>Authentication records</strong> — session tokens and sign-in timestamps, needed to keep you logged in securely.</li>
+  </ul>
+  <div id="cfg-content-section"></div>
+  <div id="cfg-vc-section"></div>
+
+  <h3>Usage analytics</h3>
+  <p>We collect product analytics to understand which features are used and to improve the app: <strong id="cfg-analytics-providers"></strong>. Analytics include pseudonymous identifiers and usage events (app opens, feature usage, purchases status). <strong>Analytics never include the content of your personal entries.</strong> If you are in the EEA/UK and wish to object to analytics processing, email <span class="cfg-email-inline"></span> from your account address.</p>
+
+  <h3>Purchase data</h3>
+  <p id="cfg-purchases"></p>
+
+  <h3>Push notifications</h3>
+  <p>If you enable notifications, a device push token is used to deliver them via Google's Firebase Cloud Messaging and Expo's push infrastructure. Disable notifications in system settings and the token goes unused.</p>
+
+  <h3>Server and security logs</h3>
+  <p>Our hosting providers process standard technical request logs (IP address, request time, user agent) for security, abuse prevention, and reliability. These logs are not used for advertising or profiling.</p>
+
+  <h3>Information we do not collect</h3>
+  <p>We do not collect your contacts, precise location, browsing history, or data from other apps. We do not knowingly collect information from children under 13.</p>
+
+  <h2>2. Permissions</h2>
+  <p id="cfg-permissions"></p>
+  <p class="muted">The app does not access your camera, microphone, or files in the background.</p>
+
+  <h2>3. Legal bases (EEA/UK)</h2>
+  <ul>
+    <li><strong>Account and content data</strong> — performance of our contract with you (providing the Service).</li>
+    <li><strong>Analytics</strong> — legitimate interest to understand and improve the Service (you may object, see above).</li>
+    <li><strong>Push notifications and optional features</strong> — your consent, withdrawable at any time.</li>
+    <li><strong>Security logs</strong> — legitimate interest in keeping the Service secure.</li>
+  </ul>
+
+  <h2>4. How we share information</h2>
+  <p>We do not sell your personal information. We share data only with the processors needed to run the Service:</p>
+  <table id="cfg-providers"><thead><tr><th>Provider</th><th>Role</th><th>Data involved</th></tr></thead><tbody></tbody></table>
+  <p class="muted">These providers process data on our instructions under their standard data processing agreements. Some process data outside the EEA, including in the United States; those transfers rely on their EU Standard Contractual Clauses and certification frameworks.</p>
+  <p>We may also disclose information if required by law, regulation, or valid legal process. <span id="cfg-e2ee-legal"></span></p>
+
+  <h2>5. Data retention</h2>
+  <ul>
+    <li><strong>Your content</strong> — retained until you delete it in the app or delete your account.</li>
+    <li><strong>Account data</strong> — retained while your account exists and up to 30 days after deletion, then purged.</li>
+    <li><strong>Backup copies</strong> — may persist up to 90 days after deletion before being overwritten.</li>
+    <li><strong>Analytics</strong> — retained per the providers' standard retention windows.</li>
+    <li><strong>Purchase records</strong> — as long as required for tax and accounting obligations.</li>
+  </ul>
+
+  <h2>6. Deleting your data</h2>
+  <ul>
+    <li>Delete content any time inside the app.</li>
+    <li><strong>Delete your account and all associated data</strong> by emailing <span class="cfg-email-inline"></span> from your account's address with the subject "Delete my account". We verify the request and complete deletion within 30 days, subject to backup windows above. If you cannot access your account, we will verify your identity by other reasonable means before deleting. You can also use the request form on our <a href="#delete">Delete Account</a> page.</li>
+  </ul>
+  <div id="cfg-e2ee-delete"></div>
+
+  <h2>7. Security</h2>
+  <p id="cfg-security"></p>
+  <p class="muted">No system is perfectly secure; if a breach affecting your data occurs, we will notify you and the relevant supervisory authority as required by law.</p>
+
+  <h2>8. Your rights</h2>
+  <p>Depending on where you live, you may have the right to access, rectify, export, erase, object to or restrict processing of your personal data, and withdraw consent for optional features. To exercise any right, email <span class="cfg-email-inline"></span> — we respond within 30 days. In Romania you may lodge a complaint with ANSPDCP (www.dataprotection.ro). California residents: we do not sell or share personal information as defined by the CCPA/CPRA.</p>
+
+  <h2>9. Children</h2>
+  <p>The Service is not directed at children under 13 and we do not knowingly collect their data. If you believe a child under 13 has created an account, contact us and we will delete it.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>If we make material changes, we will update this page and change the effective date, and notify you in the app (or by email, where appropriate) before changes take effect. If a change ever reduces your protections, we will not apply it to your existing data without your consent.</p>
+
+  <h2>11. Contact</h2>
+  <p><strong id="cfg-operator2"></strong><br>Email: <strong class="cfg-email-inline"></strong><br><span id="cfg-country2"></span></p>
+</section>
+
+<!-- ═══════════════════ TERMS OF SERVICE ═══════════════════ -->
+<section class="doc" id="terms">
+  <h1>Terms of Service</h1>
+  <p class="meta">Effective date: <span id="cfg-date2"></span></p>
+
+  <p>These Terms govern your use of <strong id="cfg-app3">the App</strong> and related services operated by <strong id="cfg-operator3"></strong>. By creating an account or using the Service, you agree to these Terms. If you do not agree, do not use the Service.</p>
+
+  <h2>1. The Service</h2>
+  <p id="cfg-tos-service"></p>
+
+  <h2>2. Accounts and eligibility</h2>
+  <p id="cfg-tos-auth"></p>
+  <p>You must be at least 13 years old to use the Service. You are responsible for the activity on your account and for keeping your device and sign-in method secure.</p>
+
+  <h2>3. Your content</h2>
+  <ul>
+    <li><strong>Ownership:</strong> You own your content. We claim no ownership over it.</li>
+    <li><strong>License:</strong> You grant us only the limited, revocable license needed to store, sync, and display your content back to you (and, for content you choose to share with a group, to the members you invited) — nothing more.</li>
+    <li><strong>Responsibility:</strong> You are solely responsible for your content and for what you share with others. You confirm you have the right to store and share it.</li>
+  </ul>
+  <div id="cfg-e2ee-tos"></div>
+
+  <h2>4. Acceptable use</h2>
+  <p>You agree <strong>not</strong> to:</p>
+  <ul>
+    <li>use the Service to store or share unlawful content, including content that is harassing, hateful, sexually explicit involving minors, infringing, or otherwise illegal;</li>
+    <li>harass, threaten, or abuse other users through any shared or social feature;</li>
+    <li>reverse engineer, decompile, or attempt to extract the source code of the app, except where permitted by law;</li>
+    <li>use the Service to build a competing product, scrape it, or automate access in ways that degrade it for others;</li>
+    <li>circumvent security measures, entitlement checks, or usage limits.</li>
+  </ul>
+  <p>We may suspend or terminate accounts that violate these rules or applicable law.</p>
+
+  <h2 id="cfg-tos-subs-anchor">5. Subscriptions and purchases</h2>
+  <div id="cfg-tos-subs"></div>
+  <ul>
+    <li>Purchases and subscription management (cancellation, refunds where applicable) happen through your platform's store; the store's payment and refund policies apply.</li>
+    <li>Prices are displayed at checkout in your local currency and may vary by region or over time; we will always show the price before you confirm a purchase.</li>
+    <li>Paid features remain available while the subscription is active. If a payment fails, access to paid features may be suspended until it is resolved.</li>
+    <li><strong>Refunds</strong> for purchases and subscriptions are handled under the store's refund policy (for Google Play: Google Play refunds). Refund requests made directly to us are assessed case by case in line with applicable consumer law; nothing in these Terms limits refund rights you have under mandatory law.</li>
+  </ul>
+
+  <div id="cfg-tos-vc"></div>
+
+  <h2>6. Sharing and group features</h2>
+  <p id="cfg-tos-ugc"></p>
+
+  <h2>7. Availability, changes, and termination</h2>
+  <ul>
+    <li>We work hard to keep the Service available and may add, change, or remove features. If we discontinue the Service in its entirety, we will provide reasonable advance notice and a window to export your data.</li>
+    <li><strong>You can stop using the Service and delete your account at any time</strong> (see the Privacy Policy, "Deleting your data").</li>
+    <li>We may suspend or terminate access for violation of these Terms or for legal reasons. Where feasible, we will notify you first.</li>
+  </ul>
+
+  <h2>8. Disclaimers</h2>
+  <p>The Service is provided "as is" and "as available" without warranties of any kind, express or implied, to the maximum extent permitted by law. We do not warrant that the Service will be uninterrupted, error-free, or that data loss will never occur — that is why we strongly encourage you to use the built-in backup features. <span id="cfg-e2ee-disclaimer"></span></p>
+  <p>The Service is a personal journaling and productivity tool. It is not a medical or mental-health device and nothing in it constitutes medical advice.</p>
+
+  <h2>9. Limitation of liability</h2>
+  <p>To the maximum extent permitted by law, the operator's total liability arising from or relating to the Service is limited to the greater of (a) the amount you paid us in the 12 months before the claim, or (b) EUR 50. We are not liable for indirect, incidental, special, consequential, or punitive damages, or for lost data that you had the ability to back up. Nothing in these Terms limits liability that cannot be limited by law (including liability for intent, gross negligence, or personal injury).</p>
+
+  <h2>10. Governing law and disputes</h2>
+  <p>These Terms are governed by the laws of Romania, without prejudice to mandatory consumer protections in your country of residence (including EU consumer law, which may give you the right to bring claims in your country of residence). Before formal action, contact us — we commit to trying to resolve every dispute in good faith within 30 days.</p>
+
+  <h2>11. Changes to these Terms</h2>
+  <p>We may update these Terms. For material changes we will notify you in the app (or by email) at least 14 days before they take effect. Continuing to use the Service after that means you accept the updated Terms; if you do not agree, you may delete your account.</p>
+
+  <h2>12. Contact</h2>
+  <p>Questions about these Terms: <strong class="cfg-email-inline"></strong></p>
+</section>
+
+<!-- ═══════════════════ DELETE ACCOUNT (Play Console "Account deletion URL" target) ═══════════════════ -->
+<section class="doc" id="delete">
+  <h1>Delete your <span id="cfg-delapp"></span> account &amp; data</h1>
+  <p class="meta">How to request deletion of your account and associated data — as described in our <a href="#privacy">Privacy Policy</a>.</p>
+
+  <h2>What you should know first</h2>
+  <ul>
+    <li>You can delete individual journals and entries yourself at any time inside the app.</li>
+    <li><strong>Requesting account deletion does not require the app.</strong> This page works from any browser, with or without the app installed, and does not require you to sign in.</li>
+    <li>Deletion is permanent: once completed, the account and its data cannot be restored.</li>
+  </ul>
+
+  <h2>How to request deletion</h2>
+  <ol>
+    <li><strong>Optional:</strong> export or note anything you want to keep — deletion cannot be undone.</li>
+    <li>Fill in the form below and press <strong>Open email draft</strong>. Your email app opens with everything pre-filled — just press send. (You can also email us directly at <span class="cfg-email-inline"></span>.)</li>
+    <li>Send the request <strong>from your account's email address</strong> — the address you use to sign in. If you no longer have access to it, mention a different address where we can reach you: we will verify your identity by other reasonable means before deleting.</li>
+    <li>We verify the request and complete deletion <strong>within 30 days</strong>, then confirm by email.</li>
+  </ol>
+
+  <div class="del-form">
+    <label for="del-account-email">Your account email (the address you sign in with)</label>
+    <input id="del-account-email" type="email" autocomplete="email" placeholder="you@example.com">
+    <label for="del-extra">Anything we should know? (optional)</label>
+    <textarea id="del-extra" placeholder="e.g. I no longer have access to this address; you can reach me at …"></textarea>
+    <div class="err" id="del-err">Please enter the email address of the account you want to delete.</div>
+    <button class="btn" id="del-send" type="button">Open email draft</button>
+    <p class="formhint">This opens your email app with the request pre-filled. Nothing is sent or stored by this website. Prefer to write manually?</p>
+    <div class="copyline"><span class="muted">To:</span> <code id="del-email-code"></code> <button class="copybtn" id="del-copy-email" type="button">Copy</button></div>
+    <div class="copyline"><span class="muted">Subject:</span> <code id="del-subject-code"></code> <button class="copybtn" id="del-copy-subject" type="button">Copy</button></div>
+  </div>
+
+  <h2>What gets deleted, and what we keep</h2>
+  <table>
+    <thead><tr><th>Data type</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Account information</strong> — email address, Google profile identifier, internal account IDs, session records</td><td>Deleted</td></tr>
+      <tr><td><strong>Journal content</strong> — entries, moods, photos, drawings, voice-note records, tags, timestamps, including the ciphertext of end-to-end encrypted journals</td><td>Deleted — for encrypted journals this is permanent: no recovery for anyone, including the operator</td></tr>
+      <tr><td><strong>Attached media files</strong> in cloud object storage</td><td>Deleted</td></tr>
+      <tr><td><strong>Virtual currency balance and earning/spending records</strong></td><td>Deleted (balances have no monetary value)</td></tr>
+      <tr><td><strong>Push notification tokens</strong></td><td>Deleted / invalidated</td></tr>
+      <tr><td><strong>Purchase records</strong> — transactions processed by Google Play Billing and RevenueCat</td><td>Retained as long as required for tax and accounting obligations</td></tr>
+      <tr><td><strong>Backup copies</strong> — database and storage snapshots</td><td>May persist up to <strong>90 days</strong> after deletion before being overwritten</td></tr>
+      <tr><td><strong>Usage analytics</strong> — pseudonymous identifiers and usage events</td><td>Deleted or anonymized per the analytics providers' standard retention windows; never linked back to a deleted account</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout"><strong>Timeline:</strong> verified requests are completed within 30 days. Backup copies may take up to 90 days to be fully overwritten. Purchase records are kept only as long as tax and accounting rules require.</div>
+
+  <h2>Questions?</h2>
+  <p>Email <strong class="cfg-email-inline"></strong> — we respond within 30 days. If you are in the EEA/UK, you also have the rights described in the <a href="#privacy">Privacy Policy</a>.</p>
+</section>
+
+<footer id="cfg-footer"></footer>
+</div>
+
+<script>
+/* ═══════════════ APP_CONFIG — EDIT ONLY THIS BLOCK ═══════════════ */
+const APP_CONFIG = {
+  appName:        "ThymeLime",
+  tagline:        "Private journal & mood tracker — Privacy Policy and Terms of Service",
+  accent:         "#7cb342",              // single accent color, any hex
+  operator:       "Valentin Tilneac",
+  country:        "Romania",
+  email:          "thymelime@validcodes.app",
+  effectiveDate:  "September 7, 2026",
+
+  // ── Feature switches ──
+  auth:           "Google Sign-In (no passwords)",
+  e2ee:           true,                    // end-to-end encryption present?
+  virtualCurrency:{ name: "Limes", icon: "🍋" },  // set null to remove VC terms
+  subscriptions:  { store: "Google Play Billing", product: "ThymeLime Plus",
+                    tiers: "weekly, monthly, annual, and lifetime options" },
+  analytics:      ["PostHog (US cloud)", "Firebase Analytics (Google LLC)"],
+  providers: [
+    ["Supabase",          "Account, authentication, application database", "Account info, journal data"],
+    ["Cloudflare (R2)",   "Media object storage",                          "Attached media (encrypted for E2EE journals)"],
+    ["Google / Firebase", "Analytics; push infrastructure",                "Usage events, device identifiers, push tokens"],
+    ["PostHog",           "Product analytics",                             "Usage events, pseudonymous ID"],
+    ["RevenueCat",        "Subscription management",                       "User ID, purchase status, email (if provided)"],
+    ["Expo",              "Push notification delivery",                    "Device push tokens"],
+    ["Google Play Billing","Payment processing",                           "Purchase transactions (we never see card data)"]
+  ],
+  permissions: [
+    "Microphone — only when you record a voice note; transcription happens on your device.",
+    "Notifications — only if you enable them.",
+    "Photo/storage access — only when you attach a photo, through the system picker you control."
+  ],
+  serviceDescription: "ThymeLime is a personal journaling app: you write entries, track moods, attach photos, drawings and voice notes, and can optionally share specific journals with small invited groups.",
+  ugcDescription:   "Sharing is strictly invite-only: you create a group, invite specific people, and only members can see what is shared there. There is no public feed, no discovery, and no search across users. You are responsible for what you share; do not share content you do not have the right to share. Report or removal requests can be sent to the contact email below."
+};
+/* ═══════════════ END APP_CONFIG — everything below is generic ═══════════════ */
+
+(function render(){
+  const $ = id => document.getElementById(id);
+  const esc = s => { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; };
+  document.documentElement.style.setProperty('--accent', APP_CONFIG.accent);
+
+  // header + shared fields
+  $('cfg-appname').innerHTML = esc(APP_CONFIG.appName) + '<span class="dot">.</span>';
+  $('cfg-tagline').textContent = APP_CONFIG.tagline;
+  ['cfg-date','cfg-date2'].forEach(i => $(i).textContent = APP_CONFIG.effectiveDate);
+  ['cfg-app1','cfg-app3'].forEach(i => $(i).textContent = APP_CONFIG.appName);
+  ['cfg-operator','cfg-operator2','cfg-operator3'].forEach(i => $(i).textContent = APP_CONFIG.operator);
+  ['cfg-country','cfg-country2'].forEach(i => $(i).textContent = APP_CONFIG.country);
+  $('cfg-email1').textContent = APP_CONFIG.email;
+  document.querySelectorAll('.cfg-email-inline').forEach(el => el.textContent = APP_CONFIG.email);
+  $('cfg-footer').textContent = '© ' + new Date().getFullYear() + ' ' + APP_CONFIG.operator + ' · ' + APP_CONFIG.appName;
+  $('cfg-delapp').textContent = APP_CONFIG.appName;
+
+  // privacy: E2EE bits
+  if (APP_CONFIG.e2ee) {
+    $('cfg-e2ee-summary').innerHTML = 'We designed the Service so that your journal content stays under your control — including <strong>end-to-end encryption</strong> for protected journals, which makes their content technically impossible for us to read.';
+    $('cfg-e2ee-li').textContent = 'End-to-end encrypted journals are encrypted on your device — technically unreadable to us, our hosting providers, and anyone with server access.';
+    $('cfg-e2ee-legal').innerHTML = 'For <strong>end-to-end encrypted journals, we are technically unable to produce their content</strong> — we can only confirm that an account exists.';
+    $('cfg-e2ee-delete').innerHTML = '<div class="callout">Because end-to-end encrypted journals cannot be read by us, deleting their encrypted data means the content is gone permanently — there is no recovery, by us or anyone, after deletion.</div>';
+    $('cfg-e2ee-tos').innerHTML = '<div class="callout"><strong>Encryption:</strong> protected journals are end-to-end encrypted (AES-256-GCM) with keys that stay on your devices. You are responsible for your encryption key and any passphrase backup you create — <strong>if you lose both your key and your passphrase backup, the encrypted content cannot be recovered by anyone, including the operator.</strong></div>';
+    $('cfg-e2ee-disclaimer').innerHTML = 'For end-to-end encrypted content, we cannot recover lost keys or ciphertext for you.';
+    $('cfg-content-section').innerHTML =
+      '<h3>Journal content</h3><ul>' +
+      '<li><strong>What it includes:</strong> entry text, moods, photos, drawings, voice notes, tags, and related metadata (timestamps, structure).</li>' +
+      '<li><strong>End-to-end encrypted journals:</strong> encrypted on your device (AES-256-GCM) before leaving it; the server stores only ciphertext.</li>' +
+      '<li><strong>Other journals:</strong> stored on our servers so your devices can sync. Protected in transit (TLS) and access-controlled. The operator accesses this content only for the purposes described in this policy — operating, securing, and improving the Service, or assisting with a problem you report. These purposes may include automated processing and, where necessary to resolve your specific support request, human review of the specific content involved. This content is never used for advertising, profiling, or AI training.</li>' +
+      '<li><strong>Media files</strong> are stored in encrypted cloud object storage (Cloudflare R2) and transmitted only over encrypted connections.</li>' +
+      '<li><strong>Voice notes are transcribed on your device.</strong> Your audio is not uploaded for transcription.</li></ul>';
+    $('cfg-security').innerHTML = 'End-to-end encryption (AES-256-GCM, per-entry keys, device-held master key, passphrase-based key backup) for protected journals; TLS for all data in transit; server-side access rules (row-level security) restrict database access to your own data; production system access is limited to the operator.';
+    $('cfg-summary-access').innerHTML = 'Journals without end-to-end encryption are stored to sync across your devices, under the access rules described in section 1.';
+  } else {
+    $('cfg-content-section').innerHTML = '<h3>User content</h3><p>Content you create in the app is stored so the Service can sync it across your devices. It is protected in transit (TLS) and access-controlled. We access it only to operate, secure, and improve the Service (automated processing; human review only where necessary for a specific support request) — never for advertising, profiling, or AI training.</p>';
+    ['cfg-e2ee-summary','cfg-e2ee-li','cfg-e2ee-legal','cfg-e2ee-delete','cfg-e2ee-tos','cfg-e2ee-disclaimer'].forEach(i => $(i).innerHTML = '');
+    $('cfg-security').innerHTML = 'TLS for all data in transit; access-controlled storage; server-side rules restrict database access to your own data; production access is limited to the operator.';
+  }
+
+  // privacy: virtual currency data section
+  if (APP_CONFIG.virtualCurrency) {
+    $('cfg-vc-section').innerHTML = '<h3>Virtual currency (' + esc(APP_CONFIG.virtualCurrency.name + ' ' + APP_CONFIG.virtualCurrency.icon) + ')</h3><p>' + esc(APP_CONFIG.appName) + ' includes an earned virtual currency (' + esc(APP_CONFIG.virtualCurrency.name) + '). We process your balance, your earning records (which in-app actions earned currency), and your spending history, to provide the feature and to prevent abuse of it. ' + esc(APP_CONFIG.virtualCurrency.name) + ' are part of your account data: they are earned through in-app activity, and where ' + esc(APP_CONFIG.virtualCurrency.name) + ' packs are offered for purchase, each purchase grants exactly the fixed amount displayed at checkout — never a random or hidden amount. Currency is never paid out or redeemed for real money. It is covered by the same access and deletion rights as the rest of your account.</p>';
+  }
+
+  // privacy: analytics + purchases + permissions + providers
+  $('cfg-analytics-providers').textContent = APP_CONFIG.analytics.join(' and ');
+  $('cfg-purchases').innerHTML = 'If you make purchases (' + esc(APP_CONFIG.subscriptions.product) + '): ' + esc(APP_CONFIG.subscriptions.store) + ' processes the payment — we never receive your card details, only a transaction record. <strong>RevenueCat, Inc.</strong> manages entitlements on our behalf, processing your user ID, purchase and subscription status, and (if provided) your email, so purchases work across devices and reinstalls.';
+  $('cfg-permissions').innerHTML = '<ul>' + APP_CONFIG.permissions.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>';
+  document.querySelector('#cfg-providers tbody').innerHTML =
+    APP_CONFIG.providers.map(r => '<tr><td><strong>' + esc(r[0]) + '</strong></td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>').join('');
+
+  // terms
+  $('cfg-tos-service').textContent = APP_CONFIG.serviceDescription;
+  $('cfg-tos-auth').innerHTML = 'Accounts are created through ' + esc(APP_CONFIG.auth) + '. There are no in-app passwords; authentication is handled by your sign-in provider and our authentication infrastructure.';
+  $('cfg-tos-subs').innerHTML = '<p>' + esc(APP_CONFIG.appName) + ' may offer paid subscriptions or one-time purchases (currently: ' + esc(APP_CONFIG.subscriptions.product) + ' — ' + esc(APP_CONFIG.subscriptions.tiers) + '), sold exclusively through ' + esc(APP_CONFIG.subscriptions.store) + '.</p>' +
+    '<div class="callout"><strong>Auto-renewal:</strong> subscriptions renew automatically at the end of each period (unless canceled at least 24 hours before renewal through your store account settings). You can cancel anytime — access continues until the end of the paid period.</div>';
+  if (APP_CONFIG.virtualCurrency) {
+    $('cfg-tos-vc').innerHTML = '<h2>' + esc(APP_CONFIG.virtualCurrency.icon + ' ' + APP_CONFIG.virtualCurrency.name + ' (virtual currency)') + '</h2><ul>' +
+      '<li><strong>' + esc(APP_CONFIG.virtualCurrency.name) + ' have no real-world value.</strong> They are earned through in-app activity. Where ' + esc(APP_CONFIG.virtualCurrency.name) + ' packs are offered for purchase, buying a pack grants exactly the fixed amount shown at checkout; packs never contain random or chance-based amounts. ' + esc(APP_CONFIG.virtualCurrency.name) + ' cannot be exchanged for real money and have no cash refund value.</li>' +
+      '<li><strong>Not gambling:</strong> nothing in the app can be purchased where the buyer does not know in advance what they will receive; there are no lootboxes, random paid items, or chance-based purchases.</li>' +
+      '<li>Balances are non-transferable between users. If we suspend an account for abuse (e.g., exploiting earning mechanics), we may reset or revoke currency earned abusively.</li>' +
+      '<li>If the Service is discontinued, earned currency has no monetary claim attached to it.</li></ul>';
+  }
+  $('cfg-tos-ugc').textContent = APP_CONFIG.ugcDescription;
+})();
+
+/* account deletion request form — mailto-based: no backend, nothing sent or stored by this site */
+(function(){
+  const $ = id => document.getElementById(id);
+  const EMAIL = APP_CONFIG.email;
+  const SUBJECT = 'Delete my account'; // must match the subject documented in the Privacy Policy
+  $('del-email-code').textContent = EMAIL;
+  $('del-subject-code').textContent = SUBJECT;
+
+  function composeBody(){
+    const lines = [
+      'Delete my account',
+      '',
+      'App: ' + APP_CONFIG.appName,
+      'Account email (the address I sign in with): ' + $('del-account-email').value.trim()
+    ];
+    const note = $('del-extra').value.trim();
+    if (note) lines.push('Additional details: ' + note);
+    lines.push('', '(Sent from the ' + APP_CONFIG.appName + ' account deletion page.)');
+    return lines.join('\n');
+  }
+
+  $('del-send').addEventListener('click', function(){
+    const v = $('del-account-email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+      $('del-err').style.display = 'block';
+      $('del-account-email').focus();
+      return;
+    }
+    $('del-err').style.display = 'none';
+    window.location.href = 'mailto:' + EMAIL +
+      '?subject=' + encodeURIComponent(SUBJECT) +
+      '&body=' + encodeURIComponent(composeBody());
+  });
+
+  function fallbackCopy(t){
+    const ta = document.createElement('textarea');
+    ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    ta.remove();
+  }
+  function bindCopy(btnId, getText){
+    $(btnId).addEventListener('click', function(){
+      const t = getText();
+      const done = function(){ const b = $(btnId); const old = b.textContent; b.textContent = 'Copied!'; setTimeout(function(){ b.textContent = old; }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(done, function(){ fallbackCopy(t); done(); });
+      } else { fallbackCopy(t); done(); }
+    });
+  }
+  bindCopy('del-copy-email', function(){ return EMAIL; });
+  bindCopy('del-copy-subject', function(){ return SUBJECT; });
+})();
+
+/* tab switching + hash deep links (#privacy / #terms / #delete) */
+const DOC_TITLES = {
+  privacy: APP_CONFIG.appName + ' — Privacy Policy',
+  terms:   APP_CONFIG.appName + ' — Terms of Service',
+  delete:  'Delete your ' + APP_CONFIG.appName + ' account and data'
+};
+function showDoc(id){
+  document.querySelectorAll('section.doc').forEach(s => s.classList.remove('visible'));
+  document.getElementById(id).classList.add('visible');
+  document.querySelectorAll('nav.tabs a').forEach(a => a.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  if (DOC_TITLES[id]) document.title = DOC_TITLES[id];
+  window.scrollTo({top:0});
+}
+function routeFromHash(){
+  const h = (location.hash || '#privacy').slice(1);
+  showDoc(h === 'terms' ? 'terms' : (h === 'delete' ? 'delete' : 'privacy'));
+}
+window.addEventListener('hashchange', routeFromHash);
+routeFromHash();
+</script>
+</body>
+</html>

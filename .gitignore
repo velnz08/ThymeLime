@@ -1,0 +1,5 @@
+# publish ONLY the docs/ folder (the website) — everything else stays local
+/*
+!/.gitignore
+!/docs/
+!/docs/**

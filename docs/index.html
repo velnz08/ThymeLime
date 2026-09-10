@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ThymeLime landing page — static, no CDNs, no analytics, no external requests.
+  Palette: one accent (lime #7cb342) + neutrals. No gradients, no glows, no emoji icons.
+  Screenshots are REAL app captures (Android) shown in a neutral device frame.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThymeLime — Journal & Mood Tracker</title>
+<meta name="description" content="ThymeLime is a private journal and mood tracker with shared journals, streaks and quests. Coming soon to Google Play.">
+<style>
+  :root { --accent:#7cb342; --accent-dim:#558b2f; --bg:#fcfcf9; --card:#ffffff; --text:#1f2430; --muted:#5c6470; --line:#e4e7eb; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+  .wrap { max-width:1000px; margin:0 auto; padding:0 22px; }
+
+  header.site { border-bottom:1px solid var(--line); background:var(--card); position:sticky; top:0; z-index:10; }
+  .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+  .brand { font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; text-decoration:none; color:var(--text); }
+  .brand .dot { color:var(--accent); }
+  nav.links { display:flex; gap:22px; align-items:center; }
+  nav.links a { text-decoration:none; color:var(--muted); font-weight:600; font-size:.95rem; }
+  nav.links a:hover { color:var(--text); }
+  nav.links a.cta { background:var(--accent); color:#fff; padding:8px 16px; border-radius:999px; }
+
+  .hero { display:grid; grid-template-columns:1.15fr 1fr; gap:48px; align-items:center; padding:64px 0 40px; }
+  .kicker { display:inline-block; font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-dim); border:1px solid var(--accent); border-radius:999px; padding:4px 12px; margin-bottom:18px; }
+  h1 { font-size:2.6rem; line-height:1.15; letter-spacing:-0.03em; margin-bottom:14px; }
+  h1 em { font-style:normal; color:var(--accent-dim); }
+  .sub { font-size:1.15rem; color:var(--muted); margin-bottom:26px; max-width:44ch; }
+  .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn { display:inline-block; text-decoration:none; font-weight:700; border-radius:999px; padding:12px 24px; font-size:1rem; }
+  .btn-primary { background:var(--accent); color:#fff; }
+  .btn-ghost { border:1px solid var(--line); color:var(--text); background:var(--card); }
+  .soon-note { margin-top:18px; color:var(--muted); font-size:.92rem; }
+
+  /* neutral device frame */
+  .device { width:290px; margin:0 auto; border:10px solid #16181d; border-radius:40px; background:#16181d; box-shadow:0 24px 60px rgba(22,24,29,.18); overflow:hidden; position:relative; }
+  .device .screen { display:block; width:100%; aspect-ratio: 9/19.5; object-fit:cover; object-position:top; background:#fff; }
+  .device .notch { position:absolute; top:8px; left:50%; transform:translateX(-50%); width:86px; height:18px; background:#16181d; border-radius:10px; }
+  .device-caption { text-align:center; color:var(--muted); font-size:.85rem; margin-top:12px; }
+
+  .shots { padding:30px 0 10px; }
+  .shots h2, section h2 { font-size:1.6rem; letter-spacing:-0.02em; margin-bottom:8px; }
+  .shots .lead { color:var(--muted); margin-bottom:26px; }
+  .shot-row { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .shot-row .device { width:100%; max-width:250px; }
+  .shot-row figure figcaption { text-align:center; color:var(--muted); font-size:.9rem; margin-top:10px; }
+
+  .features { padding:56px 0; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:24px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; }
+  .card h3 { font-size:1.05rem; margin:12px 0 6px; }
+  .card p { color:var(--muted); font-size:.95rem; }
+  .icon { width:36px; height:36px; color:var(--accent-dim); }
+
+  .privacy-band { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--card); padding:40px 0; }
+  .privacy-band .wrap { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center; }
+
+  .soon { padding:56px 0; text-align:center; }
+  .soon .big { font-size:1.9rem; font-weight:800; letter-spacing:-0.02em; margin-bottom:10px; }
+
+  footer.site { border-top:1px solid var(--line); padding:28px 0 40px; color:var(--muted); font-size:.9rem; }
+  footer.site .cols { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  footer.site a { color:var(--muted); text-decoration:none; }
+  footer.site a:hover { color:var(--text); text-decoration:underline; }
+
+  @media (max-width: 860px){
+    .hero { grid-template-columns:1fr; padding-top:40px; text-align:center; }
+    .sub { margin-left:auto; margin-right:auto; }
+    .hero-actions { justify-content:center; }
+    .shot-row { grid-template-columns:1fr; justify-items:center; }
+    .grid3 { grid-template-columns:1fr; }
+    .privacy-band .wrap { grid-template-columns:1fr; }
+    nav.links a:not(.cta) { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">ThymeLime<span class="dot">.</span></a>
+    <nav class="links">
+      <a href="index.html#features">Features</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="#coming-soon">Coming soon</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="padding:0;">
+    <span class="kicker">Coming soon to Google Play</span>
+    <h1>Your journal, <em>your words</em> — kept yours.</h1>
+    <p class="sub">ThymeLime is a private journal and mood tracker with shared journals, daily streaks and quests. Offline-first, end-to-end encrypted where it matters, and free to start.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#coming-soon">Notify me at launch</a>
+      <a class="btn btn-ghost" href="index.html#features">See features</a>
+    </div>
+    <p class="soon-note">Currently in closed testing. Public release is close — this page will link the Play Store listing the day it ships.</p>
+  </div>
+  <div>
+    <div class="device">
+      <img class="screen" src="assets/shot-home.png" alt="ThymeLime journal timeline screen" onerror="this.style.display='none'">
+      <div class="notch"></div>
+    </div>
+    <p class="device-caption">The journal timeline — real app capture</p>
+  </div>
+</section>
+
+<section class="shots" id="showcase">
+  <div class="wrap">
+    <h2>A look inside</h2>
+    <p class="lead">Screenshots taken from the app itself — no mockups.</p>
+    <div class="shot-row">
+      <figure>
+        <div class="device"><img class="screen" src="assets/shot-journal.png" alt="Journal entry with tags" onerror="this.style.display='none'"><div class="notch"></div></div>
+        <figcaption>Journal — write it down, once is enough</figcaption>
+      </figure>
+      <figure>
+        <div class="device"><img class="screen" src="assets/shot-search.png" alt="Search memories" onerror="this.style.display='none'"><div class="notch"></div></div>
+        <figcaption>Search — find any memory by text, tag, or place</figcaption>
+      </figure>
+      <figure>
+        <div class="device"><img class="screen" src="assets/shot-shop.png" alt="The Lime Market" onerror="this.style.display='none'"><div class="notch"></div></div>
+        <figcaption>The Lime Market — earn Limes by journaling, spend them on themes</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <h2>Everything a journal should be. Nothing it shouldn't.</h2>
+    <div class="grid3">
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8c2-2 5-2 7 0 2-2 5-2 7 0M5 16c2-2 5-2 7 0 2-2 5-2 7 0"/></svg>
+        <h3>Journaling that stays yours</h3>
+        <p>Text, photos, drawings and voice notes — organized on a timeline. Your content is never sold, never used for ads, profiling, or AI training.</p>
+      </div>
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <h3>End-to-end encrypted journals</h3>
+        <p>Protected journals are encrypted on your device with keys that never leave it. Not even the developer can read them.</p>
+      </div>
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <h3>Streaks, quests &amp; Limes</h3>
+        <p>Build a daily habit with streaks and quests, and earn Limes — the in-app currency you spend on themes and small comforts. No lootboxes, ever.</p>
+      </div>
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.6c.5-.1 1-.2 1.5-.2 2.8 0 5 2.2 5 5"/></svg>
+        <h3>Shared, not public</h3>
+        <p>Share a journal with the people you choose — strictly invite-only. No public feed, no discovery, no search across users.</p>
+      </div>
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 12h4M12 3v4"/><circle cx="12" cy="12" r="2"/></svg>
+        <h3>Works offline</h3>
+        <p>Write on a plane, in the mountains, on the metro. Everything syncs when you're back — built offline-first.</p>
+      </div>
+      <div class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 4.9L20 9l-4 3.6.9 5.4L12 15.8 7.1 18l.9-5.4L4 9l5.8-1.1z"/></svg>
+        <h3>Make it yours</h3>
+        <p>Themes, custom templates and daily reflection prompts. Free to start — Plus unlocks statistics, friends and the full toolkit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy-band">
+  <div class="wrap">
+    <div>
+      <h2>Private by design, not by promise</h2>
+      <p style="color:var(--muted); margin-top:8px;">The full privacy policy is written in plain language: what is collected, why, what never leaves your device, and how to delete everything. Voice notes are transcribed on your device — your audio is never uploaded for transcription.</p>
+      <p style="margin-top:14px;"><a class="btn btn-ghost" href="legal.html#privacy">Read the privacy policy</a></p>
+    </div>
+    <div>
+      <h2>Leaving should be easy too</h2>
+      <p style="color:var(--muted); margin-top:8px;">You can delete your account and all associated data at any time — no reinstalling the app, no dark patterns. Requests are honored within 30 days.</p>
+      <p style="margin-top:14px;"><a class="btn btn-ghost" href="legal.html#delete">Delete your account</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="soon" id="coming-soon">
+  <div class="wrap">
+    <span class="kicker">Coming soon</span>
+    <p class="big">ThymeLime is almost ready.</p>
+    <p style="color:var(--muted); max-width:52ch; margin:0 auto 22px;">The app is in closed testing on Google Play right now. Come back on launch day — or write to <a href="mailto:thymelime@validcodes.app" style="color:var(--accent-dim); font-weight:600;">thymelime@validcodes.app</a> and we'll let you know when it's live.</p>
+    <a class="btn btn-primary" href="mailto:thymelime@validcodes.app?subject=Notify%20me%20at%20launch">Tell me when it ships</a>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div>© <span id="yr"></span> Valentin Tilneac · ThymeLime</div>
+    <div>
+      <a href="legal.html#privacy">Privacy</a> · <a href="legal.html#terms">Terms</a> · <a href="legal.html#delete">Delete account</a> · <a href="contact.html">Contact</a> · <a href="about.html">About</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
