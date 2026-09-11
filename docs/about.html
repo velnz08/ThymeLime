@@ -1,74 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — ThymeLime</title>
-<meta name="description" content="Who builds ThymeLime, and the principles behind it.">
+<meta name="description" content="ThymeLime is built by one developer with one rule: your journal is yours. Offline-first, end-to-end encrypted where it matters, no ads, no trackers.">
+<link rel="canonical" href="https://thymelime.validcodes.app/about.html">
+<meta name="theme-color" content="#F5F9F0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
-  :root { --accent:#7cb342; --accent-dim:#558b2f; --bg:#fcfcf9; --card:#ffffff; --text:#1f2430; --muted:#5c6470; --line:#e4e7eb; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
-  .wrap { max-width:860px; margin:0 auto; padding:0 22px; }
-  header.site { border-bottom:1px solid var(--line); background:var(--card); position:sticky; top:0; z-index:10; }
-  .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-  .brand { font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; text-decoration:none; color:var(--text); }
-  .brand .dot { color:var(--accent); }
-  nav.links { display:flex; gap:22px; align-items:center; }
-  nav.links a { text-decoration:none; color:var(--muted); font-weight:600; font-size:.95rem; }
-  nav.links a:hover { color:var(--text); }
-  nav.links a.cta { background:var(--accent); color:#fff; padding:8px 16px; border-radius:999px; }
-  h1 { font-size:2.2rem; letter-spacing:-0.03em; margin:48px 0 6px; }
-  .lead { color:var(--muted); font-size:1.12rem; margin-bottom:28px; }
-  h2 { font-size:1.3rem; letter-spacing:-0.02em; margin:34px 0 10px; }
-  p { margin:10px 0; color:#2a303c; }
-  ul { padding-left:22px; margin:10px 0; }
-  li { margin:6px 0; color:#2a303c; }
-  .principles { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:22px 0; }
-  .p-card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; }
-  .p-card h3 { font-size:1rem; margin-bottom:6px; }
-  .p-card p { color:var(--muted); font-size:.93rem; margin:0; }
-  footer.site { border-top:1px solid var(--line); margin-top:56px; padding:26px 0 40px; color:var(--muted); font-size:.9rem; }
-  footer.site a { color:var(--muted); }
-  @media (max-width:700px){ .principles { grid-template-columns:1fr; } nav.links a:not(.cta){ display:none; } }
+:root{--bg:#F5F9F0;--bg-card:#EDF5E5;--accent:#4D8A2A;--accent-soft:#3D7020;--accent-muted:rgba(77,138,42,.13);--text:#121A0C;--text-2:#2A381C;--text-3:#344020;--border:#C8D8B8;--t-fast:180ms;--ease-standard:cubic-bezier(0.2,0,0,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.015em}
+a{color:var(--accent-soft)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+nav{background:rgba(245,249,240,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+.nav-in{max-width:860px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--text);text-decoration:none;font-size:17px}
+.nav-back{margin-left:auto;font-size:14.5px;font-weight:600;color:var(--text-2);text-decoration:none}
+.nav-back:hover{color:var(--accent-soft)}
+main{max-width:680px;margin:0 auto;padding:56px 24px 80px}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--accent-muted);border:1px solid var(--border);border-radius:999px;padding:6px 14px;margin-bottom:18px}
+h1{font-size:clamp(30px,4.5vw,42px);line-height:1.1;margin-bottom:18px}
+h2{font-size:22px;margin:38px 0 12px}
+p{color:var(--text-2);margin-bottom:14px;font-size:16px}
+.p-cards{display:grid;gap:12px;margin:22px 0}
+.p-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+.p-card b{display:block;margin-bottom:4px}
+.p-card span{font-size:14.5px;color:var(--text-3)}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-3);font-size:13.5px}
+footer a{color:var(--text-2);margin:0 10px;text-decoration:none}
+footer a:hover{color:var(--accent-soft)}
 </style>
 </head>
 <body>
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html">ThymeLime<span class="dot">.</span></a>
-    <nav class="links">
-      <a href="index.html#features">Features</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a class="cta" href="index.html#coming-soon">Coming soon</a>
-    </nav>
-  </div>
-</header>
-
-<div class="wrap">
-  <h1>About</h1>
-  <p class="lead">ThymeLime is built by one person who wanted a journal that stays a journal.</p>
-
-  <p>Hi — I'm Valentin, an independent developer based in Romania. I built ThymeLime because I kept running into the same trade-off: journaling apps that are free but read your words to power ads and "insights", or private apps that lock the basics behind a subscription. I wanted both things at once: a journal that works beautifully for free, and never treats your words as data to mine.</p>
-
-  <p>ThymeLime is that. It is a real product with a real business model — a single optional upgrade — and a hard rule that your content is never sold, never used for advertising, profiling, or AI training. The privacy policy is written to be read, not to be survived.</p>
-
+<nav><div class="nav-in">
+  <a class="brand" href="index.html"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#4D8A2A"/><path d="M10 8h12M10 16h12M10 24h8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>ThymeLime</a>
+  <a class="nav-back" href="index.html">← Back to home</a>
+</div></nav>
+<main>
+  <span class="kicker">About</span>
+  <h1>One developer. One rule: your journal is yours.</h1>
+  <p>ThymeLime started as a personal need: a journal that keeps up with real life — words, photos, voice notes, moods — without selling my attention to do it. No ads, no trackers, no engagement games. Just a calm place to remember your year.</p>
   <h2>Principles I build by</h2>
-  <div class="principles">
-    <div class="p-card"><h3>Your words are not training data</h3><p>No ads, no profiling, no AI training on your content. Not now, not "anonymized", not ever.</p></div>
-    <div class="p-card"><h3>Encryption where it counts</h3><p>Protected journals are end-to-end encrypted on your device. Shared journals are invite-only by design — there is no public feed to leak to.</p></div>
-    <div class="p-card"><h3>Offline is a feature</h3><p>Write anywhere; sync happens when you're back. Your journal should not need a network to open.</p></div>
-    <div class="p-card"><h3>Leaving is easy</h3><p>Full account deletion, honored within 30 days, no reinstall required. A journal you can't leave isn't private.</p></div>
+  <div class="p-cards">
+    <div class="p-card"><b>Offline-first, always</b><span>The app works with no account and no internet. Sync is a feature, not a requirement.</span></div>
+    <div class="p-card"><b>Encryption where it matters</b><span>Journals are end-to-end encrypted. Voice transcription happens on your device — raw audio never leaves it.</span></div>
+    <div class="p-card"><b>No dark patterns</b><span>Streaks and limes exist to help you build a habit — never to guilt you into opening the app.</span></div>
+    <div class="p-card"><b>Deletion means deletion</b><span>One action in the app removes your account and data. It's in the product, not buried in a policy.</span></div>
   </div>
-
   <h2>What's next</h2>
-  <p>ThymeLime is in closed testing on Google Play and getting its last rough edges sanded off. When it ships, the button on the <a href="index.html">front page</a> will take you straight to the store listing. If you want to say hi, report a bug, or ask anything: <a href="contact.html">contact</a>.</p>
-</div>
-
-<footer class="site">
-  <div class="wrap">© <span id="yr"></span> Valentin Tilneac · <a href="legal.html#privacy">Privacy</a> · <a href="legal.html#terms">Terms</a> · <a href="contact.html">Contact</a></div>
+  <p>ThymeLime is finishing closed testing on Google Play. Join the early-access list and you'll get a ping the day it's live.</p>
+  <p><a href="index.html#coming-soon">Get early access →</a></p>
+</main>
+<footer>
+  <a href="index.html">Home</a><a href="legal.html">Privacy &amp; Terms</a><a href="contact.html">Contact</a>
+  <br>© 2026 Valentin Tilneac — ThymeLime
 </footer>
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
