@@ -205,9 +205,10 @@ section{padding:84px 0}
 .shot figcaption{margin-top:16px;font-size:14.5px;font-weight:600;color:var(--text-2)}
 @media(max-width:860px){
   .shot-row{grid-template-columns:1fr;justify-items:center;gap:34px}
-  /* the year view is the star screen — lead with it on phones (was hidden before) */
+  /* the year view is the star screen — lead with it on phones (was hidden before).
+     All three phones share ONE size rule so no screen reads as oddly wider/taller. */
   .shot:nth-child(2){order:-1}
-  .shot:nth-child(2) img{height:min(72vh,560px)}
+  .shot-row .shot img{height:min(66vh,520px)}
 }
 /* ===== privacy band (app dark theme) ===== */
 .privacy-band{
