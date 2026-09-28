@@ -333,12 +333,16 @@ const APP_CONFIG = {
     ["PostHog",           "Product analytics",                             "Usage events, pseudonymous ID"],
     ["RevenueCat",        "Subscription management",                       "User ID, purchase status, email (if provided)"],
     ["Expo",              "Push notification delivery",                    "Device push tokens"],
-    ["Google Play Billing","Payment processing",                           "Purchase transactions (we never see card data)"]
+    ["Google Play Billing","Payment processing",                           "Purchase transactions (we never see card data)"],
+    ["Open-Meteo",        "Weather lookup when an entry has a place",      "Coordinates (sent only to fetch the current weather)"],
+    ["OpenStreetMap (Nominatim)", "Place-name lookup for imported photos", "Coordinates (sent only to resolve a place name)"]
   ],
   permissions: [
     "Microphone — only when you record a voice note; transcription happens on your device.",
     "Notifications — only if you enable them.",
-    "Photo/storage access — only when you attach a photo, through the system picker you control."
+    "Camera and photo/storage access: only when you attach a photo or drawing, through the picker or camera you choose to open.",
+    "Location: only when you add a place to an entry, used for the place name and the weather. Decline it and the rest of the app still works.",
+    "Calendar: only if you turn on Calendar Import, to bring the events you choose onto your timeline."
   ],
   serviceDescription: "ThymeLime is a personal journaling app: you write entries, track moods, attach photos, drawings and voice notes, and can optionally share specific journals with small invited groups.",
   ugcDescription:   "Sharing is strictly invite-only: you create a group, invite specific people, and only members can see what is shared there. There is no public feed, no discovery, and no search across users. You are responsible for what you share; do not share content you do not have the right to share. Report or removal requests can be sent to the contact email below."
