@@ -226,7 +226,7 @@
   <div id="cfg-tos-vc"></div>
 
   <h2>6. Sharing and group features</h2>
-  <p id="cfg-tos-ugc"></p>
+  <div id="cfg-tos-ugc"></div>
 
   <h2>7. Availability, changes, and termination</h2>
   <ul>
@@ -345,7 +345,9 @@ const APP_CONFIG = {
     "Calendar: only if you turn on Calendar Import, to bring the events you choose onto your timeline."
   ],
   serviceDescription: "ThymeLime is a personal journaling app: you write entries, track moods, attach photos, drawings and voice notes, and can optionally share specific journals with small invited groups.",
-  ugcDescription:   "Sharing is strictly invite-only: you create a group, invite specific people, and only members can see what is shared there. There is no public feed, no discovery, and no search across users. You are responsible for what you share; do not share content you do not have the right to share. Report or removal requests can be sent to the contact email below."
+  ugcDescription:   "Sharing is strictly invite-only: you create a group, invite specific people, and only members can see what is shared there. There is no public feed, no discovery, and no search across users.",
+  ugcProhibited:    "We have zero tolerance for objectionable content and abusive behavior in shared spaces. You may not post or share content that harasses, bullies, threatens or defames anyone; that promotes hate or violence against a person or group; that is sexually explicit, or that sexualizes or endangers minors; that depicts or encourages self-harm; or that is spam, a scam, or otherwise unlawful. You are responsible for what you share, and you must have the right to share it. We remove content that breaks these rules and may suspend or permanently terminate the account responsible.",
+  ugcModeration:    "Moderation and controls: every post and comment in a shared journal has a report option in its overflow menu. You can also block the person who posted it, either from that same menu or at the confirmation step of the report you just sent. Reports are queued on your device and reach us the next time the app syncs, so they are not instant, and they are not anonymous to us. Blocking takes effect immediately and stops that person's content appearing in your shared journals; they are not notified. You can review and lift a block at any time in Settings, Creation Hub, Blocked accounts. Shared content is end-to-end encrypted, so a report carries the text of the reported item only if you leave the attach switch turned on; with it off we receive the report without the content, which limits what we can act on. We review reports and may remove content or terminate accounts. You can also reach us at the address below."
 };
 /* ═══════════════ END APP_CONFIG — everything below is generic ═══════════════ */
 
@@ -413,7 +415,17 @@ const APP_CONFIG = {
       '<li>Balances are non-transferable between users. If we suspend an account for abuse (e.g., exploiting earning mechanics), we may reset or revoke currency earned abusively.</li>' +
       '<li>If the Service is discontinued, earned currency has no monetary claim attached to it.</li></ul>';
   }
-  $('cfg-tos-ugc').textContent = APP_CONFIG.ugcDescription;
+  // UGC / moderation policy: one paragraph per configured key
+  const ugcHost = $('cfg-tos-ugc');
+  if (ugcHost) {
+    [APP_CONFIG.ugcDescription, APP_CONFIG.ugcProhibited, APP_CONFIG.ugcModeration]
+      .filter(Boolean)
+      .forEach(text => {
+        const p = document.createElement('p');
+        p.textContent = text;
+        ugcHost.appendChild(p);
+      });
+  }
 })();
 
 /* account deletion request form — mailto-based: no backend, nothing sent or stored by this site */
