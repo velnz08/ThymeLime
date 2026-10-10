@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proof — ThymeLime</title>
+<meta name="description" content="The things people check before trusting a journal with years of their life: can I leave, can I restore one entry, will I be told what was lost, how many copies exist, and is my writing ever sent to a model. Here is what ThymeLime actually does.">
+<link rel="canonical" href="https://thymelime.validcodes.app/proof.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Proof — ThymeLime">
+<meta property="og:description" content="You can leave whenever you want. You can restore one entry instead of all of it. You will be told what was lost. No copy of your journal is ever sent to a model.">
+<meta property="og:url" content="https://thymelime.validcodes.app/proof.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proof — ThymeLime">
+<meta name="twitter:description" content="What ThymeLime actually does about export, restore, data storage and on-device transcription, verified in the source.">
+<meta name="theme-color" content="#F5F9F0">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+:root{--bg:#F5F9F0;--bg-card:#EDF5E5;--accent:#4D8A2A;--accent-soft:#3D7020;--accent-muted:rgba(77,138,42,.13);--text:#121A0C;--text-2:#2A381C;--text-3:#344020;--border:#C8D8B8;--t-fast:180ms;--ease-standard:cubic-bezier(0.2,0,0,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.015em}
+a{color:var(--accent-soft)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+nav{background:rgba(245,249,240,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+.nav-in{max-width:860px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--text);text-decoration:none;font-size:17px}
+.nav-back{margin-left:auto;font-size:14.5px;font-weight:600;color:var(--text-2);text-decoration:none}
+.nav-back:hover{color:var(--accent-soft)}
+main{max-width:680px;margin:0 auto;padding:56px 24px 80px}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--accent-muted);border:1px solid var(--border);border-radius:999px;padding:6px 14px;margin-bottom:18px}
+h1{font-size:clamp(30px,4.5vw,42px);line-height:1.1;margin-bottom:18px}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:16.5px;margin:22px 0 6px}
+p{color:var(--text-2);margin-bottom:14px;font-size:16px}
+.lede{font-size:17.5px;color:var(--text)}
+.p-cards{display:grid;gap:12px;margin:22px 0}
+.p-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+.p-card b{display:block;margin-bottom:4px}
+.p-card span{font-size:14.5px;color:var(--text-3)}
+.q{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:14px;padding:16px 20px;margin:20px 0;font-family:Georgia,"Times New Roman",serif;font-size:17px;color:var(--text);font-style:italic}
+.matrix{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.matrix th,.matrix td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--border);color:var(--text-2)}
+.matrix th{font-weight:700;color:var(--text);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+.matrix tr:last-child td{border-bottom:none}
+.matrix td:first-child{color:var(--text);font-weight:600}
+.yes{color:var(--accent-soft);font-weight:600}
+.no{color:var(--text-3)}
+.limits{background:var(--accent-muted);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin:24px 0}
+.limits h3{margin-top:0}
+.limits p{font-size:15px;margin-bottom:10px}
+.limits p:last-child{margin-bottom:0}
+code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13.5px;background:var(--accent-muted);border:1px solid var(--border);border-radius:6px;padding:1.5px 6px;color:var(--text)}
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--text-3);font-size:13.5px}
+footer a{color:var(--text-2);margin:0 10px;text-decoration:none}
+footer a:hover{color:var(--accent-soft)}
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <a class="brand" href="index.html"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#4D8A2A"/><path d="M10 8h12M10 16h12M10 24h8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>ThymeLime</a>
+  <a class="nav-back" href="index.html">&larr; Back to home</a>
+</div></nav>
+<main>
+  <span class="kicker">Proof</span>
+  <h1>Don't take our word for it.</h1>
+  <p class="lede">Choosing a journal means handing it years of your life. Before anyone does that, they check a handful of things. These are the checks, and what ThymeLime actually does about each one.</p>
+  <p>Everything on this page is a description of behaviour that exists in the app today. Where something has a limit, the limit is written down next to it rather than left for you to discover later.</p>
+
+  <div class="q">"Can I get my journal back out before I commit to putting it in?"</div>
+  <h2>Yes. Three formats in, and your own entries out.</h2>
+  <p>Import is usually where the evaluation ends. If a journal can't read what you already have, you can't switch to it, however good it looks. ThymeLime reads the three formats people actually arrive with, and writes a portable archive you can take anywhere.</p>
+  <table class="matrix">
+    <thead><tr><th>Format</th><th>Bring in</th><th>Take out</th></tr></thead>
+    <tbody>
+      <tr><td>Day One export</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>CSV</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Markdown</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Everything, as a single archive</td><td class="yes">&mdash;</td><td class="yes">Yes (.vault)</td></tr>
+    </tbody>
+  </table>
+  <p>The archive is a single self-contained file with a manifest, holding your entries, your media and a copy of the database. It is designed to be readable without us: you do not need ThymeLime, our servers, or our permission to open it.</p>
+
+  <div class="q">"If I import and something doesn't come through, will I know?"</div>
+  <h2>Yes, and by name.</h2>
+  <p>The failure people describe about other apps is the silent one: a note that is still there but empty, and no way to tell whether it was always empty. ThymeLime's importers are built to make that impossible.</p>
+  <div class="p-cards">
+    <div class="p-card"><b>The count always balances</b><span>Every row in your file is accounted for. If an importer reports 900 entries and 40 skipped, those are 940 of your 940 rows. The arithmetic is an enforced invariant, not a summary.</span></div>
+    <div class="p-card"><b>Unreadable columns are reported by name</b><span>If a column can't be interpreted, the importer tells you which one instead of dropping it. You are the only person who can say whether that column mattered.</span></div>
+    <div class="p-card"><b>Media that the export itself lost is distinguished from media that failed</b><span>Competitor exports can report success while omitting photos. The report separates "these photos were never in your file" from "these photos could not be saved", because the two need different responses from you.</span></div>
+  </div>
+
+  <div class="q">"If one entry is bad, do I have to restore everything?"</div>
+  <h2>No. You can pull a single entry out of a backup.</h2>
+  <p>This is the check most journals fail: restore is all-or-nothing, so one bad entry means overwriting everything with a stale copy. ThymeLime opens a backup, lets you search it, and brings back one entry at a time.</p>
+  <p>Two properties make that safe:</p>
+  <div class="p-cards">
+    <div class="p-card"><b>Your backup file is never opened directly</b><span>It is extracted to a scratch area first, and only that copy is read. Browsing a backup cannot alter it, and cannot consume it.</span></div>
+    <div class="p-card"><b>Reading is enforced, not promised</b><span>The backup is opened in read-only mode by the database engine itself (<code>query_only</code>). It is not a matter of the code being careful.</span></div>
+    <div class="p-card"><b>Restores only ever add</b><span>A recovered entry is written as a new entry. A restore never overwrites or deletes a live one, so the worst case is a duplicate you can remove, not a loss you cannot undo.</span></div>
+  </div>
+
+  <div class="q">"How many copies of my journal exist, and where?"</div>
+  <h2>Up to four, and you control all of them.</h2>
+  <div class="p-cards">
+    <div class="p-card"><b>1. On your device</b><span>The app's own database, in private app storage. This is the source of truth and it works with no account and no internet.</span></div>
+    <div class="p-card"><b>2. In a backup file you own</b><span>Exported on demand to a <code>.vault</code> archive, wherever you choose to put it. Nobody else has a copy unless you make one.</span></div>
+    <div class="p-card"><b>3. Your encryption key, separately</b><span>If you turn on end-to-end encryption, the key can be backed up on its own, wrapped with a passphrase only you know. It is deliberately kept out of the archive: a backup that carried its own key would protect nothing.</span></div>
+    <div class="p-card"><b>4. Optionally, in sync</b><span>If you sign in, entries sync to infrastructure we run, and media goes to object storage. Skip sign-in and this copy does not exist.</span></div>
+  </div>
+
+  <div class="q">"Is my writing ever sent to a model?"</div>
+  <h2>No. There is no model in the app at all.</h2>
+  <p>Not a disabled integration, not an opt-in one, not an "AI features" corner you have to avoid. No model provider is integrated anywhere in ThymeLime, and voice notes are transcribed on your device, where the audio stays.</p>
+  <p>"No AI" would mean little on its own, so here is the wider answer. Every connection the app can make, and what it carries:</p>
+  <table class="matrix">
+    <thead><tr><th>Goes to</th><th>Carries</th><th>Your writing?</th></tr></thead>
+    <tbody>
+      <tr><td>Our sync backend</td><td>Your entries and media, only if you sign in</td><td>Yes, by design</td></tr>
+      <tr><td>Weather</td><td>Your coordinates and the date</td><td class="no">No</td></tr>
+      <tr><td>Place lookup and map tiles</td><td>Coordinates, to put a name on a place</td><td class="no">No</td></tr>
+      <tr><td>Horoscope</td><td>Your zodiac sign</td><td class="no">No</td></tr>
+      <tr><td>Last.fm, only if you connect it</td><td>Your Last.fm username and the tracks you listened to</td><td class="no">No</td></tr>
+      <tr><td>Product analytics</td><td>Screen names, button names, event counts</td><td class="no">No</td></tr>
+    </tbody>
+  </table>
+  <p>Analytics deserves the closest look, so be precise about it. It records which screens you opened and which buttons you pressed, because that is how you discover a screen is confusing. It does not receive your entries, your photos, or your voice notes. There is no upload of your content to "improve the product", and the analytics row is the only one that watches anything you do inside the app at all.</p>
+  <p>Sign out, or never sign in, and the first row does not exist either. The rest are either a feature you switched on yourself or an anonymous lookup of a coordinate or a date.</p>
+
+  <div class="q">"If I subscribe early, will I be punished for it later?"</div>
+  <h2>The price you start at is the price you keep.</h2>
+  <p>Early users are the reason a product survives long enough to raise its prices. If ThymeLime's subscription price ever changes, existing subscribers keep the price they signed up at, for as long as their subscription stays active. That is a commitment, not a courtesy, and it will not be quietly revised.</p>
+
+  <div class="limits">
+    <h3>What we are not claiming</h3>
+    <p>Proof only means something if the edges are stated too.</p>
+    <p><b>Not every format is lossless.</b> A CSV cannot carry what a CSV cannot express. The importers report what they could not read, but reported is not the same as recovered.</p>
+    <p><b>Encryption is optional.</b> It is off until you turn it on. Turning it on protects entries going forward and, where applicable, what you choose to re-save. It is not retroactive magic.</p>
+    <p><b>If you delete the app without an export, we cannot recover your journal.</b> An offline-first app means we never had a copy to give back. This is the trade that makes the rest of the page true.</p>
+    <p><b>Sync requires an account.</b> Offline use does not. If you never sign in, everything except the sync copy above still holds.</p>
+  </div>
+
+  <h2>How to check any of this yourself</h2>
+  <p>Export your journal and open it with any zip tool. Browse a backup and restore one entry. Turn your phone's network off and keep using the app. None of these require trusting a page, including this one.</p>
+  <p><a href="index.html#coming-soon">Get early access &rarr;</a></p>
+</main>
+<footer>
+  <a href="index.html">Home</a><a href="proof.html">Proof</a><a href="legal.html">Privacy &amp; Terms</a><a href="contact.html">Contact</a>
+  <br>&copy; 2026 Valentin Tilneac &mdash; ThymeLime
+</footer>
+</body>
+</html>
